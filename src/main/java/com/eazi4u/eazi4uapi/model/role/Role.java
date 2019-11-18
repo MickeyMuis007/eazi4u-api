@@ -1,9 +1,10 @@
 package com.eazi4u.eazi4uapi.model.role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.eazi4u.eazi4uapi.model.user.user_role.UserRole;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Role {
@@ -13,9 +14,12 @@ public class Role {
     String name;
     String description;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    List<UserRole> userRoles = new ArrayList<>();
+
     private Role() { }
 
-    public Role(RoleBuilder builder) {
+    Role(RoleBuilder builder) {
         id = builder.id;
         name = builder.name;
         description = builder.description;
