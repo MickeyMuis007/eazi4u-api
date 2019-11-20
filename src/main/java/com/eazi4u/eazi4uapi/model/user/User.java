@@ -16,6 +16,7 @@ public class User {
     String password;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_Id")
     List<UserRole> userRoles = new ArrayList<UserRole>();
 
     private User() {
@@ -42,5 +43,9 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
     }
 }

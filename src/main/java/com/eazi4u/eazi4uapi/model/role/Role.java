@@ -15,9 +15,10 @@ public class Role {
     String description;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="role_id")
     List<UserRole> userRoles = new ArrayList<>();
 
-    private Role() { }
+    public Role() { }
 
     Role(RoleBuilder builder) {
         id = builder.id;
@@ -36,4 +37,6 @@ public class Role {
     public String getDescription() {
         return description;
     }
+
+
 }

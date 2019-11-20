@@ -2,6 +2,7 @@ package com.eazi4u.eazi4uapi.model.user.user_role;
 
 import com.eazi4u.eazi4uapi.model.role.Role;
 import com.eazi4u.eazi4uapi.model.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
@@ -12,12 +13,14 @@ public class UserRole {
     Long id;
 
     @ManyToOne
+    @JoinColumn(name="user_id", insertable = true, updatable = true, nullable=false)
     User user;
 
     @ManyToOne
+    @JoinColumn(name="role_id", insertable = true, updatable = true, nullable=false)
     Role role;
 
-    private UserRole() {}
+    public UserRole() {}
 
     UserRole(UserRoleBuilder builder) {
         id = builder.id;
@@ -35,5 +38,17 @@ public class UserRole {
 
     public Role getRole() {
         return role;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
