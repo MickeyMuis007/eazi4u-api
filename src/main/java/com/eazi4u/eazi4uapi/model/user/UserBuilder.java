@@ -7,6 +7,8 @@ public class UserBuilder {
     String name;
     String username;
     String password;
+    String email;
+    boolean enabled;
 
     public static UserBuilder getInstance() {
         if (userBuilder == null) {
@@ -35,11 +37,22 @@ public class UserBuilder {
         return this;
     }
 
+    public UserBuilder email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public UserBuilder enabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
     public UserBuilder copy(User user) {
         this.id = user.id;
         this.name = user.name;
         this.username = user.username;
         this.password = user.password;
+        this.enabled = user.enabled;
         return this;
     }
 

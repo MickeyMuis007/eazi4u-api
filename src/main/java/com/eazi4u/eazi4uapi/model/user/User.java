@@ -7,13 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
+
+    @Column(unique = true)
     String username;
     String password;
+    String email;
+    boolean enabled;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="user_Id")
@@ -27,6 +32,7 @@ public class User {
         name = builder.name;
         username = builder.username;
         password = builder.password;
+        enabled = builder.enabled;
     }
 
     public Long getId() {
@@ -43,6 +49,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public List<UserRole> getUserRoles() {
