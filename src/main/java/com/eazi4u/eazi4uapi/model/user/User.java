@@ -32,6 +32,7 @@ public class User {
         name = builder.name;
         username = builder.username;
         password = builder.password;
+        email = builder.email;
         enabled = builder.enabled;
     }
 
